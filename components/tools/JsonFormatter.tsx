@@ -9,11 +9,6 @@ function parseIndent(value: string): JsonIndent {
   return value === "4" ? 4 : 2;
 }
 
-function parseIndent(value: string): JsonIndent {
-  if (value === "tab" || value === "minify") return value;
-  return value === "4" ? 4 : 2;
-}
-
 export function JsonFormatter() {
   const [text, setText] = useState("");
   const [indent, setIndent] = useState<JsonIndent>(2);
