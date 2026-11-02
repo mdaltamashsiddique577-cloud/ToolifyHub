@@ -3,10 +3,30 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTool, getCategory, liveTools } from "../../../lib/registry.ts";
 import { WordCounter } from "../../../components/tools/WordCounter.tsx";
+import { CharacterCounter } from "../../../components/tools/CharacterCounter.tsx";
+import { CaseConverter } from "../../../components/tools/CaseConverter.tsx";
+import { RemoveExtraSpaces } from "../../../components/tools/RemoveExtraSpaces.tsx";
+import { AgeCalculator } from "../../../components/tools/AgeCalculator.tsx";
+import { BmiCalculator } from "../../../components/tools/BmiCalculator.tsx";
+import { EmiCalculator } from "../../../components/tools/EmiCalculator.tsx";
+import { PercentageCalculator } from "../../../components/tools/PercentageCalculator.tsx";
+import { GstCalculator } from "../../../components/tools/GstCalculator.tsx";
+import { JsonFormatter } from "../../../components/tools/JsonFormatter.tsx";
+import { Base64Tool } from "../../../components/tools/Base64Tool.tsx";
 
 // Only live tools get a page. Tools not yet built return 404, never a fake page.
 const COMPONENTS: Record<string, React.ComponentType> = {
   "word-counter": WordCounter,
+  "character-counter": CharacterCounter,
+  "case-converter": CaseConverter,
+  "remove-extra-spaces": RemoveExtraSpaces,
+  "age-calculator": AgeCalculator,
+  "bmi-calculator": BmiCalculator,
+  "emi-calculator": EmiCalculator,
+  "percentage-calculator": PercentageCalculator,
+  "gst-calculator": GstCalculator,
+  "json-formatter": JsonFormatter,
+  "base64-encoder": Base64Tool,
 };
 
 export function generateStaticParams() {

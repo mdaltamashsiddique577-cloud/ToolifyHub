@@ -43,7 +43,7 @@ export const TOOLS: ToolMeta[] = [
     category: "text",
     summary: "Count characters with and without spaces.",
     keywords: ["character count", "sms", "tweet length"],
-    live: false,
+    live: true,
   },
   {
     slug: "case-converter",
@@ -51,7 +51,7 @@ export const TOOLS: ToolMeta[] = [
     category: "text",
     summary: "Change text to upper, lower, title or sentence case.",
     keywords: ["uppercase", "lowercase", "title case"],
-    live: false,
+    live: true,
   },
   {
     slug: "remove-extra-spaces",
@@ -59,7 +59,7 @@ export const TOOLS: ToolMeta[] = [
     category: "text",
     summary: "Collapse repeated spaces and clean up blank lines.",
     keywords: ["trim", "whitespace", "clean text"],
-    live: false,
+    live: true,
   },
   {
     slug: "age-calculator",
@@ -67,7 +67,7 @@ export const TOOLS: ToolMeta[] = [
     category: "calculators",
     summary: "Work out age in years, months, days and total days.",
     keywords: ["age", "birthday", "date difference"],
-    live: false,
+    live: true,
   },
   {
     slug: "bmi-calculator",
@@ -75,7 +75,7 @@ export const TOOLS: ToolMeta[] = [
     category: "calculators",
     summary: "Calculate body mass index and its category.",
     keywords: ["bmi", "body mass index", "weight"],
-    live: false,
+    live: true,
   },
   {
     slug: "emi-calculator",
@@ -83,7 +83,7 @@ export const TOOLS: ToolMeta[] = [
     category: "calculators",
     summary: "Monthly loan EMI, total interest and a payment schedule.",
     keywords: ["loan", "emi", "interest"],
-    live: false,
+    live: true,
   },
   {
     slug: "percentage-calculator",
@@ -91,7 +91,7 @@ export const TOOLS: ToolMeta[] = [
     category: "calculators",
     summary: "Find percentages, percentage change and add or subtract a percent.",
     keywords: ["percent", "percentage change"],
-    live: false,
+    live: true,
   },
   {
     slug: "gst-calculator",
@@ -99,7 +99,7 @@ export const TOOLS: ToolMeta[] = [
     category: "calculators",
     summary: "Add or remove GST and see the CGST and SGST split.",
     keywords: ["gst", "tax", "cgst", "sgst"],
-    live: false,
+    live: true,
   },
   {
     slug: "json-formatter",
@@ -107,7 +107,7 @@ export const TOOLS: ToolMeta[] = [
     category: "developer",
     summary: "Format, minify and validate JSON with error locations.",
     keywords: ["json", "pretty print", "validate json"],
-    live: false,
+    live: true,
   },
   {
     slug: "base64-encoder",
@@ -115,7 +115,7 @@ export const TOOLS: ToolMeta[] = [
     category: "developer",
     summary: "Encode and decode Base64 text, including Hindi and emoji.",
     keywords: ["base64", "encode", "decode"],
-    live: false,
+    live: true,
   },
 ];
 
