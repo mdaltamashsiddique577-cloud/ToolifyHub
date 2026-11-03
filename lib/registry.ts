@@ -29,6 +29,23 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const TOOLS: ToolMeta[] = [
+
+  {
+    slug: "jpg-to-pdf",
+    name: "JPG to PDF",
+    category: "pdf",
+    summary: "Put JPG or PNG images into one PDF, one image per page.",
+    keywords: ["jpg to pdf", "image to pdf", "photo to pdf"],
+    live: true,
+  },
+  {
+    slug: "image-compressor",
+    name: "Image Compressor",
+    category: "image",
+    summary: "Make JPG, PNG and WebP files smaller, right in your browser.",
+    keywords: ["compress image", "reduce image size", "shrink photo"],
+    live: true,
+  },
   {
     slug: "word-counter",
     name: "Word Counter",
@@ -126,14 +143,6 @@ export const TOOLS: ToolMeta[] = [
     live: true,
   },
   {
-    slug: "jpg-to-pdf",
-    name: "JPG to PDF",
-    category: "pdf",
-    summary: "Put JPG or PNG images into one PDF, one image per page.",
-    keywords: ["jpg to pdf", "image to pdf", "photo to pdf"],
-    live: true,
-  },
-  {
     slug: "text-to-pdf",
     name: "Text to PDF",
     category: "pdf",
@@ -163,14 +172,6 @@ export const TOOLS: ToolMeta[] = [
     category: "pdf",
     summary: "Pull chosen pages or ranges out of a PDF into a new file.",
     keywords: ["split pdf", "extract pages", "separate pdf pages"],
-    live: true,
-  },
-  {
-    slug: "image-compressor",
-    name: "Image Compressor",
-    category: "image",
-    summary: "Make JPG, PNG and WebP files smaller, right in your browser.",
-    keywords: ["compress image", "reduce image size", "shrink photo"],
     live: true,
   },
   {
