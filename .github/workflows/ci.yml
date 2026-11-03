@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -18,3 +22,37 @@ jobs:
         run: npm test
       - name: Production build
         run: npm run build
+
+      - name: Static export for GitHub Pages
+        env:
+          PAGES_EXPORT: "1"
+          NEXT_PUBLIC_SITE_URL: https://mdaltamashsiddique577-cloud.github.io/ToolifyHub
+        run: npx next build
+
+      - name: Screenshots of the built site
+        run: |
+          mkdir -p shots site && cp -r out site/ToolifyHub
+          python3 -m http.server 8080 --directory site >/dev/null 2>&1 &
+          sleep 2
+          URL=http://localhost:8080/ToolifyHub
+          CH="google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars --virtual-time-budget=4000"
+          $CH --window-size=390,844 --screenshot=shots/home-phone.png "$URL/"
+          $CH --window-size=1280,900 --screenshot=shots/home-desktop.png "$URL/"
+          $CH --window-size=390,844 --screenshot=shots/tool-emi-phone.png "$URL/tools/emi-calculator/"
+          $CH --window-size=1280,900 --screenshot=shots/tool-word-counter-desktop.png "$URL/tools/word-counter/"
+          $CH --window-size=390,844 --screenshot=shots/tool-json-phone.png "$URL/tools/json-formatter/"
+          ls -la shots
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: shots/
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
+          force_orphan: true
