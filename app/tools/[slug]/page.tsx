@@ -16,6 +16,8 @@ import { Base64Tool } from "../../../components/tools/Base64Tool.tsx";
 import { ImageTool } from "../../../components/tools/ImageTool.tsx";
 import { PdfMerge } from "../../../components/tools/PdfMerge.tsx";
 import { PdfSplit } from "../../../components/tools/PdfSplit.tsx";
+import { ImagesToPdf } from "../../../components/tools/ImagesToPdf.tsx";
+import { TextToPdf } from "../../../components/tools/TextToPdf.tsx";
 
 // Only live tools get a page. Tools not yet built return 404, never a fake page.
 const COMPONENTS: Record<string, React.ComponentType> = {
@@ -38,6 +40,8 @@ const COMPONENTS: Record<string, React.ComponentType> = {
   "image-cropper": () => <ImageTool mode="crop" />,
   "merge-pdf": PdfMerge,
   "split-pdf": PdfSplit,
+  "jpg-to-pdf": ImagesToPdf,
+  "text-to-pdf": TextToPdf,
 };
 
 export function generateStaticParams() {

@@ -33,3 +33,19 @@ test("PDF files are recognised by type or name", () => {
   assert.equal(isPdfFile({ name: "report.pdf", type: "" }), true);
   assert.equal(isPdfFile({ name: "photo.jpg", type: "image/jpeg" }), false);
 });
+
+import { wrapLines } from "../lib/tools/pdf.ts";
+
+const six = (s: string) => s.length * 6;
+
+test("words wrap at the maximum width", () => {
+  assert.deepEqual(wrapLines("one two three four", 60, six), ["one two", "three four"]);
+});
+
+test("existing line breaks and blank lines are kept", () => {
+  assert.deepEqual(wrapLines("a\n\nb", 100, six), ["a", "", "b"]);
+});
+
+test("a word longer than the line is split", () => {
+  assert.deepEqual(wrapLines("abcdefgh", 24, six), ["abcd", "efgh"]);
+});

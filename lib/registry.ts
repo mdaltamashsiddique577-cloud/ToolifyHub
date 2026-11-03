@@ -126,6 +126,22 @@ export const TOOLS: ToolMeta[] = [
     live: true,
   },
   {
+    slug: "jpg-to-pdf",
+    name: "JPG to PDF",
+    category: "pdf",
+    summary: "Put JPG or PNG images into one PDF, one image per page.",
+    keywords: ["jpg to pdf", "image to pdf", "photo to pdf"],
+    live: true,
+  },
+  {
+    slug: "text-to-pdf",
+    name: "Text to PDF",
+    category: "pdf",
+    summary: "Turn typed or pasted text into a PDF file.",
+    keywords: ["text to pdf", "txt to pdf", "make pdf"],
+    live: true,
+  },
+  {
     slug: "merge-pdf",
     name: "Merge PDF",
     category: "pdf",

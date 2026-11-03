@@ -26,3 +26,37 @@ export function parsePageRanges(input: string, pageCount: number): RangeResult {
   }
   return { ok: true, pages };
 }
+
+// Word-wrap plain text to a maximum width. measure() returns the width of a string.
+// Existing line breaks are kept, and a single word wider than the line is split.
+export function wrapLines(text: string, maxWidth: number, measure: (s: string) => number): string[] {
+  const out: string[] = [];
+  for (const paragraph of text.replace(/\r\n?/g, "\n").split("\n")) {
+    if (paragraph.trim() === "") {
+      out.push("");
+      continue;
+    }
+    let line = "";
+    for (const word of paragraph.split(/\s+/).filter((w) => w.length > 0)) {
+      const candidate = line === "" ? word : `${line} ${word}`;
+      if (measure(candidate) <= maxWidth) {
+        line = candidate;
+        continue;
+      }
+      if (line !== "") out.push(line);
+      // Split a word that is too long for a whole line.
+      let piece = "";
+      for (const ch of word) {
+        if (measure(piece + ch) > maxWidth && piece !== "") {
+          out.push(piece);
+          piece = ch;
+        } else {
+          piece += ch;
+        }
+      }
+      line = piece;
+    }
+    out.push(line);
+  }
+  return out;
+}
