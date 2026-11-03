@@ -191,6 +191,14 @@ export const TOOLS: ToolMeta[] = [
     live: true,
   },
   {
+    slug: "crop-pdf",
+    name: "Crop PDF",
+    category: "pdf",
+    summary: "Trim the edges of every page in a PDF by the margin you choose.",
+    keywords: ["crop pdf", "trim pdf margins"],
+    live: true,
+  },
+  {
     slug: "merge-pdf",
     name: "Merge PDF",
     category: "pdf",

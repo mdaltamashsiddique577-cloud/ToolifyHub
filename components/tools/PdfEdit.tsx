@@ -6,13 +6,14 @@ import { ErrorNote, Field, inputClass, primaryButtonClass } from "./ui.tsx";
 import { MAX_PDF_BYTES, isPdfFile, pagesToKeep, parsePageRanges } from "../../lib/tools/pdf.ts";
 import { formatBytes } from "../../lib/tools/image.ts";
 
-export type PdfEditMode = "rotate" | "page-numbers" | "watermark" | "remove-pages";
+export type PdfEditMode = "rotate" | "page-numbers" | "watermark" | "remove-pages" | "crop";
 
 const TITLES: Record<PdfEditMode, string> = {
   rotate: "Rotate PDF",
   "page-numbers": "Add page numbers",
   watermark: "Add watermark",
   "remove-pages": "Remove pages",
+  crop: "Crop PDF",
 };
 
 const SUFFIX: Record<PdfEditMode, string> = {
@@ -20,6 +21,7 @@ const SUFFIX: Record<PdfEditMode, string> = {
   "page-numbers": "numbered",
   watermark: "watermarked",
   "remove-pages": "removed-pages",
+  crop: "cropped",
 };
 
 export function PdfEdit({ mode }: { mode: PdfEditMode }) {
@@ -28,6 +30,7 @@ export function PdfEdit({ mode }: { mode: PdfEditMode }) {
   const [turn, setTurn] = useState<90 | 180 | 270>(90);
   const [watermark, setWatermark] = useState("DRAFT");
   const [pagesText, setPagesText] = useState("");
+  const [margins, setMargins] = useState({ top: "0", right: "0", bottom: "0", left: "0" });
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<{ url: string; name: string; size: number; pages: number } | null>(null);
@@ -108,6 +111,29 @@ export function PdfEdit({ mode }: { mode: PdfEditMode }) {
         }
       }
 
+      if (mode === "crop") {
+        const m = {
+          top: Number(margins.top),
+          right: Number(margins.right),
+          bottom: Number(margins.bottom),
+          left: Number(margins.left),
+        };
+        if (Object.values(m).some((v) => !Number.isFinite(v) || v < 0)) {
+          setError("Margins must be numbers of 0 or more.");
+          return;
+        }
+        for (const page of src.getPages()) {
+          const { width, height } = page.getSize();
+          const w = width - m.left - m.right;
+          const h = height - m.top - m.bottom;
+          if (w <= 0 || h <= 0) {
+            setError("The margins are larger than the page. Make them smaller.");
+            return;
+          }
+          page.setCropBox(m.left, m.bottom, w, h);
+        }
+      }
+
       if (mode === "remove-pages") {
         const parsed = parsePageRanges(pagesText, src.getPageCount());
         if (!parsed.ok) {
@@ -176,6 +202,27 @@ export function PdfEdit({ mode }: { mode: PdfEditMode }) {
             <Field id="pdf-watermark" label="Watermark text" hint="Shown diagonally, in light grey, on every page.">
               <input id="pdf-watermark" type="text" value={watermark} onChange={(e) => setWatermark(e.target.value)} className={inputClass} />
             </Field>
+          ) : null}
+
+          {mode === "crop" ? (
+            <div className="space-y-2">
+              <p className="text-sm text-muted">Remove this much from each edge of every page, in points (72 points = 1 inch).</p>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {(["top", "right", "bottom", "left"] as const).map((side) => (
+                  <Field key={side} id={`crop-${side}`} label={side[0].toUpperCase() + side.slice(1)}>
+                    <input
+                      id={`crop-${side}`}
+                      type="number"
+                      inputMode="decimal"
+                      min={0}
+                      value={margins[side]}
+                      onChange={(e) => setMargins((prev) => ({ ...prev, [side]: e.target.value }))}
+                      className={inputClass}
+                    />
+                  </Field>
+                ))}
+              </div>
+            </div>
           ) : null}
 
           {mode === "remove-pages" ? (

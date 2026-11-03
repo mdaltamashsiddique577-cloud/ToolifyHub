@@ -49,6 +49,7 @@ const COMPONENTS: Record<string, React.ComponentType> = {
   "add-page-numbers": () => <PdfEdit mode="page-numbers" />,
   "add-watermark": () => <PdfEdit mode="watermark" />,
   "remove-pages": () => <PdfEdit mode="remove-pages" />,
+  "crop-pdf": () => <PdfEdit mode="crop" />,
 };
 
 export function generateStaticParams() {
