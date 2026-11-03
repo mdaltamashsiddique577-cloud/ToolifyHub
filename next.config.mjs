@@ -19,6 +19,11 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // pdf.js optionally loads the Node-only "canvas" package. The browser never needs it.
+  webpack(config) {
+    config.resolve.alias = { ...config.resolve.alias, canvas: false };
+    return config;
+  },
   ...(exporting
     ? { output: "export", trailingSlash: true, basePath: "/ToolifyHub" }
     : {
