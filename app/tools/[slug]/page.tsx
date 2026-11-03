@@ -14,6 +14,8 @@ import { GstCalculator } from "../../../components/tools/GstCalculator.tsx";
 import { JsonFormatter } from "../../../components/tools/JsonFormatter.tsx";
 import { Base64Tool } from "../../../components/tools/Base64Tool.tsx";
 import { ImageTool } from "../../../components/tools/ImageTool.tsx";
+import { PdfMerge } from "../../../components/tools/PdfMerge.tsx";
+import { PdfSplit } from "../../../components/tools/PdfSplit.tsx";
 
 // Only live tools get a page. Tools not yet built return 404, never a fake page.
 const COMPONENTS: Record<string, React.ComponentType> = {
@@ -33,6 +35,9 @@ const COMPONENTS: Record<string, React.ComponentType> = {
   "png-to-jpg": () => <ImageTool mode="convert" target="image/jpeg" />,
   "jpg-to-png": () => <ImageTool mode="convert" target="image/png" />,
   "webp-converter": () => <ImageTool mode="convert" target="image/webp" />,
+  "image-cropper": () => <ImageTool mode="crop" />,
+  "merge-pdf": PdfMerge,
+  "split-pdf": PdfSplit,
 };
 
 export function generateStaticParams() {

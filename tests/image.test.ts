@@ -64,3 +64,26 @@ test("lossy formats and extensions are mapped", () => {
   assert.equal(isLossy("image/webp"), true);
   assert.equal(extensionFor("image/jpeg"), "jpg");
 });
+
+import { checkCrop, cropForRatio } from "../lib/tools/image.ts";
+
+test("a crop inside the image is accepted", () => {
+  assert.deepEqual(checkCrop(1000, 800, { x: 10, y: 20, width: 100, height: 50 }), {
+    ok: true,
+    rect: { x: 10, y: 20, width: 100, height: 50 },
+  });
+});
+
+test("a crop outside the image or with bad numbers is refused", () => {
+  assert.equal(checkCrop(1000, 800, { x: 950, y: 0, width: 100, height: 10 }).ok, false);
+  assert.equal(checkCrop(1000, 800, { x: -1, y: 0, width: 10, height: 10 }).ok, false);
+  assert.equal(checkCrop(1000, 800, { x: 0, y: 0, width: 0, height: 10 }).ok, false);
+  assert.equal(checkCrop(1000, 800, { x: 0.5, y: 0, width: 10, height: 10 }).ok, false);
+  assert.equal(checkCrop(1000, 800, { x: 0, y: 0 }).ok, false);
+});
+
+test("cropForRatio gives a centred box with the requested ratio", () => {
+  assert.deepEqual(cropForRatio(1600, 900, 1), { x: 350, y: 0, width: 900, height: 900 });
+  assert.deepEqual(cropForRatio(1600, 900, 16 / 9), { x: 0, y: 0, width: 1600, height: 900 });
+  assert.deepEqual(cropForRatio(1000, 800, 0), { x: 0, y: 0, width: 1000, height: 800 });
+});

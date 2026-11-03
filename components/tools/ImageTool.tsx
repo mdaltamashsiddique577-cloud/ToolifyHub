@@ -3,17 +3,28 @@
 import { useEffect, useState, type ChangeEvent } from "react";
 import {
   MAX_IMAGE_BYTES,
+  checkCrop,
+  cropForRatio,
   extensionFor,
   fitSize,
   formatBytes,
   isInputType,
   isLossy,
   percentSaved,
+  type CropRect,
   type ImageType,
 } from "../../lib/tools/image.ts";
 import { ErrorNote, Field, inputClass, primaryButtonClass, buttonClass } from "./ui.tsx";
 
-export type ImageMode = "compress" | "resize" | "convert";
+export type ImageMode = "compress" | "resize" | "convert" | "crop";
+
+const RATIOS: { label: string; value: number }[] = [
+  { label: "Free", value: 0 },
+  { label: "1:1 square", value: 1 },
+  { label: "4:3", value: 4 / 3 },
+  { label: "3:4", value: 3 / 4 },
+  { label: "16:9", value: 16 / 9 },
+];
 
 interface Source {
   file: File;
@@ -31,7 +42,7 @@ interface Result {
 }
 
 const LABEL: Record<ImageType, string> = { "image/jpeg": "JPG", "image/png": "PNG", "image/webp": "WebP" };
-const SUFFIX: Record<ImageMode, string> = { compress: "compressed", resize: "resized", convert: "converted" };
+const SUFFIX: Record<ImageMode, string> = { compress: "compressed", resize: "resized", convert: "converted", crop: "cropped" };
 
 function toBlob(canvas: HTMLCanvasElement, type: ImageType, quality: number): Promise<Blob | null> {
   return new Promise((resolve) => canvas.toBlob((b) => resolve(b), type, quality));
@@ -49,6 +60,11 @@ export function ImageTool({ mode, target }: { mode: ImageMode; target?: ImageTyp
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
   const [keepRatio, setKeepRatio] = useState(true);
+  const [cropX, setCropX] = useState("0");
+  const [cropY, setCropY] = useState("0");
+  const [cropW, setCropW] = useState("");
+  const [cropH, setCropH] = useState("");
+  const [ratio, setRatio] = useState(0);
   const [result, setResult] = useState<Result | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -84,7 +100,20 @@ export function ImageTool({ mode, target }: { mode: ImageMode; target?: ImageTyp
     setSource({ file, url, width: img.naturalWidth, height: img.naturalHeight });
     setWidth(String(img.naturalWidth));
     setHeight(String(img.naturalHeight));
+    applyRect(cropForRatio(img.naturalWidth, img.naturalHeight, ratio));
     if (mode !== "convert") setOutput(file.type as ImageType);
+  }
+
+  function applyRect(r: CropRect) {
+    setCropX(String(r.x));
+    setCropY(String(r.y));
+    setCropW(String(r.width));
+    setCropH(String(r.height));
+  }
+
+  function changeRatio(value: number) {
+    setRatio(value);
+    if (source) applyRect(cropForRatio(source.width, source.height, value));
   }
 
   // With proportions kept, changing one side updates the other so the two boxes always agree.
@@ -107,6 +136,11 @@ export function ImageTool({ mode, target }: { mode: ImageMode; target?: ImageTyp
     try {
       let w = source.width;
       let h = source.height;
+      // The part of the source to copy: the whole image unless cropping.
+      let sx = 0;
+      let sy = 0;
+      let sw = source.width;
+      let sh = source.height;
       if (mode === "resize") {
         const fit = fitSize(source.width, source.height, {
           width: toWholeNumber(width),
@@ -119,6 +153,21 @@ export function ImageTool({ mode, target }: { mode: ImageMode; target?: ImageTyp
         }
         w = fit.width;
         h = fit.height;
+      }
+      if (mode === "crop") {
+        const crop = checkCrop(source.width, source.height, {
+          x: toWholeNumber(cropX),
+          y: toWholeNumber(cropY),
+          width: toWholeNumber(cropW),
+          height: toWholeNumber(cropH),
+        });
+        if (!crop.ok) {
+          setError(crop.message);
+          return;
+        }
+        ({ x: sx, y: sy, width: sw, height: sh } = crop.rect);
+        w = sw;
+        h = sh;
       }
 
       const img = new Image();
@@ -135,7 +184,7 @@ export function ImageTool({ mode, target }: { mode: ImageMode; target?: ImageTyp
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, w, h);
       }
-      ctx.drawImage(img, 0, 0, w, h);
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
 
       const blob = await toBlob(canvas, output, isLossy(output) ? quality / 100 : 1);
       // Browsers that cannot write a format silently return PNG, so check the type.
@@ -161,7 +210,11 @@ export function ImageTool({ mode, target }: { mode: ImageMode; target?: ImageTyp
   const showFormat = mode !== "convert";
   const showQuality = isLossy(output);
   const saved = result && source ? percentSaved(source.file.size, result.blob.size) : 0;
-  const buttonLabel = mode === "compress" ? "Compress image" : mode === "resize" ? "Resize image" : `Convert to ${LABEL[output]}`;
+  const buttonLabel =
+    mode === "compress" ? "Compress image"
+    : mode === "resize" ? "Resize image"
+    : mode === "crop" ? "Crop image"
+    : `Convert to ${LABEL[output]}`;
 
   return (
     <div className="space-y-6">
@@ -195,6 +248,32 @@ export function ImageTool({ mode, target }: { mode: ImageMode; target?: ImageTyp
                 <input type="checkbox" checked={keepRatio} onChange={(e) => setKeepRatio(e.target.checked)} />
                 Keep proportions
               </label>
+            </div>
+          ) : null}
+
+          {mode === "crop" ? (
+            <div className="space-y-4">
+              <Field id="crop-ratio" label="Shape">
+                <select id="crop-ratio" value={ratio} onChange={(e) => changeRatio(Number(e.target.value))} className={inputClass}>
+                  {RATIOS.map((r) => (
+                    <option key={r.label} value={r.value}>{r.label}</option>
+                  ))}
+                </select>
+              </Field>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <Field id="crop-x" label="X (px)">
+                  <input id="crop-x" type="number" inputMode="numeric" min={0} value={cropX} onChange={(e) => setCropX(e.target.value)} className={inputClass} />
+                </Field>
+                <Field id="crop-y" label="Y (px)">
+                  <input id="crop-y" type="number" inputMode="numeric" min={0} value={cropY} onChange={(e) => setCropY(e.target.value)} className={inputClass} />
+                </Field>
+                <Field id="crop-w" label="Width (px)">
+                  <input id="crop-w" type="number" inputMode="numeric" min={1} value={cropW} onChange={(e) => setCropW(e.target.value)} className={inputClass} />
+                </Field>
+                <Field id="crop-h" label="Height (px)">
+                  <input id="crop-h" type="number" inputMode="numeric" min={1} value={cropH} onChange={(e) => setCropH(e.target.value)} className={inputClass} />
+                </Field>
+              </div>
             </div>
           ) : null}
 
