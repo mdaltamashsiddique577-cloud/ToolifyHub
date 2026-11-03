@@ -22,6 +22,8 @@ import { TextToPdf } from "../../../components/tools/TextToPdf.tsx";
 import { PdfToImage } from "../../../components/tools/PdfToImage.tsx";
 import { PdfEdit } from "../../../components/tools/PdfEdit.tsx";
 import { SignPdf } from "../../../components/tools/SignPdf.tsx";
+import { OrganizePdf } from "../../../components/tools/OrganizePdf.tsx";
+import { CompressPdf } from "../../../components/tools/CompressPdf.tsx";
 
 // Only live tools get a page. Tools not yet built return 404, never a fake page.
 const COMPONENTS: Record<string, React.ComponentType> = {
@@ -53,6 +55,8 @@ const COMPONENTS: Record<string, React.ComponentType> = {
   "remove-pages": () => <PdfEdit mode="remove-pages" />,
   "crop-pdf": () => <PdfEdit mode="crop" />,
   "sign-pdf": SignPdf,
+  "organize-pdf": OrganizePdf,
+  "compress-pdf": CompressPdf,
 };
 
 export function generateStaticParams() {

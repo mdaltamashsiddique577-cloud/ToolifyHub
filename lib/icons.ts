@@ -2,7 +2,7 @@
 import {
   AlignLeft, ArrowRightLeft, Binary, Braces, CalendarDays, Calculator, Coins, Crop, CaseSensitive,
   Eraser, Files, FileImage, FileText, FileX, Hash, Image as ImageIcon, Maximize2, Minimize2, Percent,
-  PenTool, Receipt, RotateCw, Scale, Scissors, Stamp, Type, type LucideIcon,
+  Archive, LayoutList, PenTool, Receipt, RotateCw, Scale, Scissors, Stamp, Type, type LucideIcon,
 } from "lucide-react";
 
 export const FALLBACK_ICON: LucideIcon = Calculator;
@@ -25,6 +25,8 @@ export const ICONS: Record<string, LucideIcon> = {
   "remove-pages": FileX,
   "crop-pdf": Crop,
   "sign-pdf": PenTool,
+  "organize-pdf": LayoutList,
+  "compress-pdf": Archive,
   "word-counter": AlignLeft,
   "character-counter": Type,
   "case-converter": CaseSensitive,
@@ -54,6 +56,8 @@ export const TOOL_TONE: Record<string, string> = {
   "remove-pages": "bg-rose-50 text-rose-600",
   "crop-pdf": "bg-rose-50 text-rose-600",
   "sign-pdf": "bg-violet-50 text-violet-600",
+  "organize-pdf": "bg-rose-50 text-rose-600",
+  "compress-pdf": "bg-rose-50 text-rose-600",
   "rotate-pdf": "bg-violet-50 text-violet-600",
   "add-page-numbers": "bg-violet-50 text-violet-600",
   "add-watermark": "bg-violet-50 text-violet-600",

@@ -19,7 +19,13 @@ html {
 }
 
 body {
-  background: #ffffff;
+  /* Soft colour washes behind every page, so the background is never a flat empty white. */
+  background-color: #fbfaff;
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(108, 92, 231, 0.13), transparent 38%),
+    radial-gradient(circle at 92% 8%, rgba(125, 211, 252, 0.18), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(108, 92, 231, 0.08), transparent 45%);
+  background-repeat: no-repeat;
   color: var(--color-ink);
 }
 

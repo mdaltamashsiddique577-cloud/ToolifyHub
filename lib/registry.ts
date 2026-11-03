@@ -111,6 +111,22 @@ export const TOOLS: ToolMeta[] = [
     live: true,
   },
   {
+    slug: "organize-pdf",
+    name: "Organize PDF",
+    category: "pdf",
+    summary: "Reorder or remove pages of a PDF and save the new file.",
+    keywords: ["organize pdf", "reorder pdf pages", "rearrange pdf"],
+    live: true,
+  },
+  {
+    slug: "compress-pdf",
+    name: "Compress PDF",
+    category: "pdf",
+    summary: "Make a PDF smaller, with a choice of quality levels.",
+    keywords: ["compress pdf", "reduce pdf size", "shrink pdf"],
+    live: true,
+  },
+  {
     slug: "merge-pdf",
     name: "Merge PDF",
     category: "pdf",
