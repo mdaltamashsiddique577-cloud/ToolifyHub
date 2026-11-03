@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { CATEGORY_TONE, FALLBACK_ICON, ICONS } from "../../lib/icons.ts";
+import { FALLBACK_ICON, ICONS, TOOL_TONE } from "../../lib/icons.ts";
 
 export interface GridTool {
   slug: string;
@@ -52,7 +52,7 @@ export function ToolGrid({ tools }: { tools: GridTool[] }) {
                 href={`/tools/${t.slug}`}
                 className="group flex h-full flex-col items-center rounded-2xl border border-line bg-white p-5 text-center shadow-sm transition hover:-translate-y-0.5 hover:border-primary hover:shadow-md"
               >
-                <span className={`flex h-14 w-14 items-center justify-center rounded-2xl ${CATEGORY_TONE[t.category] ?? "bg-secondary text-primary-text"}`}>
+                <span className={`flex h-14 w-14 items-center justify-center rounded-2xl ${TOOL_TONE[t.slug] ?? "bg-secondary text-primary-text"}`}>
                   <Icon aria-hidden="true" className="h-7 w-7" />
                 </span>
                 <span className="mt-3 text-sm font-semibold leading-snug">{t.name}</span>

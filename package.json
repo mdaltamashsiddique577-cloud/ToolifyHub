@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --test tests/tools.test.ts tests/registry.test.ts tests/pages.test.ts tests/image.test.ts tests/pdf.test.ts"
+    "test": "node --test tests/tools.test.ts tests/registry.test.ts tests/pages.test.ts tests/image.test.ts tests/pdf.test.ts tests/menu.test.ts"
   },
   "engines": {
     "node": ">=22.6"

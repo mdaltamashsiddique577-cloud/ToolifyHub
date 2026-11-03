@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CATEGORY_TONE, FALLBACK_ICON, ICONS } from "../../../lib/icons.ts";
+import { FALLBACK_ICON, ICONS, TOOL_TONE } from "../../../lib/icons.ts";
 import Link from "next/link";
 import { getTool, getCategory, liveTools } from "../../../lib/registry.ts";
 import { WordCounter } from "../../../components/tools/WordCounter.tsx";
@@ -91,7 +91,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               <li aria-current="page" className="text-ink">{tool.name}</li>
             </ol>
           </nav>
-          <span className={`mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl ${CATEGORY_TONE[tool.category] ?? "bg-white text-primary-text"}`}>
+          <span className={`mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl ${TOOL_TONE[slug] ?? "bg-white text-primary-text"}`}>
             <Icon aria-hidden="true" className="h-8 w-8" />
           </span>
           <h1 className="mt-4 text-3xl font-bold tracking-tight">{tool.name}</h1>
