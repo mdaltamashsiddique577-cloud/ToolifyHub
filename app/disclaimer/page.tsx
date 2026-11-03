@@ -1,3 +1,4 @@
+// Disclaimer page (/disclaimer). Explains that calculator results are estimates. Plain text inside LegalPage.
 import type { Metadata } from "next";
 import { LegalPage } from "../../components/legal/LegalPage.tsx";
 

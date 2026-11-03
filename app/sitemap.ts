@@ -1,3 +1,5 @@
+// sitemap.xml generator. Lists the home, /tools, every category and every live tool.
+// Built from lib/registry.ts, so it updates when a tool goes live.
 import type { MetadataRoute } from "next";
 import { CATEGORIES, liveTools } from "../lib/registry.ts";
 

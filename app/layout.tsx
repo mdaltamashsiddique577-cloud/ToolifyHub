@@ -1,3 +1,6 @@
+// Root layout. Wraps every page with the fonts, default metadata, the sticky header
+// (logo and menus from components/layout/SiteMenu.tsx), and the footer with legal links.
+// Edit the site name, default metadata, or footer links here.
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Inter } from "next/font/google";

@@ -1,10 +1,12 @@
+// Sign PDF: the user draws a signature on a canvas. The PNG is placed at the bottom right of the chosen page.
+// Uses pdf-lib to embed the PNG.
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type PointerEvent } from "react";
 import { PDFDocument } from "pdf-lib";
-import { ErrorNote, Field, buttonClass, inputClass, primaryButtonClass } from "./ui.tsx";
-import { MAX_PDF_BYTES, isPdfFile } from "../../lib/tools/pdf.ts";
-import { formatBytes } from "../../lib/tools/image.ts";
+import { ErrorNote, Field, buttonClass, inputClass, primaryButtonClass } from "../ui.tsx";
+import { MAX_PDF_BYTES, isPdfFile } from "../../../lib/tools/pdf.ts";
+import { formatBytes } from "../../../lib/tools/image.ts";
 
 const PAD_W = 560;
 const PAD_H = 200;

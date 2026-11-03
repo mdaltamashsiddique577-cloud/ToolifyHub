@@ -1,8 +1,9 @@
+// Remove Extra Spaces UI with options for blank lines and edge spaces. Logic in lib/tools/text.ts.
 "use client";
 
 import { useState } from "react";
-import { removeExtraSpaces, type SpaceOptions, DEFAULT_SPACE_OPTIONS, MAX_TEXT_CHARS } from "../../lib/tools/text.ts";
-import { CopyButton, ErrorNote, buttonClass } from "./ui.tsx";
+import { removeExtraSpaces, type SpaceOptions, DEFAULT_SPACE_OPTIONS, MAX_TEXT_CHARS } from "../../../lib/tools/text.ts";
+import { CopyButton, ErrorNote, buttonClass } from "../ui.tsx";
 
 const OPTIONS: { key: keyof SpaceOptions; label: string }[] = [
   { key: "collapseSpaces", label: "Collapse repeated spaces" },

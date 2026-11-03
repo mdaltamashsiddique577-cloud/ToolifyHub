@@ -1,10 +1,11 @@
+// Word Counter UI: text box and live counts. Counting logic is in lib/tools/text.ts.
 "use client";
 
 import { useMemo, useState } from "react";
 import { Eraser } from "lucide-react";
 import {
   countWords, countCharacters, countSentences, countParagraphs, readingTimeSeconds, MAX_TEXT_CHARS,
-} from "../../lib/tools/text.ts";
+} from "../../../lib/tools/text.ts";
 
 export function WordCounter() {
   const [text, setText] = useState("");

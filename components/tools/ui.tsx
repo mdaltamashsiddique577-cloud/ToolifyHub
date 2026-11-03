@@ -1,3 +1,5 @@
+// Small shared pieces for every tool form: Field (label plus input), input and button class names,
+// ErrorNote (accessible error message), Stat (number tile), CopyButton and todayIso.
 // Shared pieces for tool pages. Kept small and dependency-free.
 import { useState, type ReactNode } from "react";
 import { Check, Copy } from "lucide-react";

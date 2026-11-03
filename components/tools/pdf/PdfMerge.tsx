@@ -1,10 +1,11 @@
+// Merge PDF: joins several PDFs in the order shown. Up and down buttons change the order. Uses pdf-lib.
 "use client";
 
 import { useEffect, useState, type ChangeEvent } from "react";
 import { PDFDocument } from "pdf-lib";
-import { ErrorNote, buttonClass, primaryButtonClass } from "./ui.tsx";
-import { MAX_PDF_BYTES, isPdfFile } from "../../lib/tools/pdf.ts";
-import { formatBytes } from "../../lib/tools/image.ts";
+import { ErrorNote, buttonClass, primaryButtonClass } from "../ui.tsx";
+import { MAX_PDF_BYTES, isPdfFile } from "../../../lib/tools/pdf.ts";
+import { formatBytes } from "../../../lib/tools/image.ts";
 
 interface Item {
   id: number;

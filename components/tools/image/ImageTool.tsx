@@ -1,3 +1,7 @@
+// One component for five image tools. The `mode` prop picks the controls:
+// compress (quality), resize (width and height), convert (fixed output format), crop (x, y, width, height and shape).
+// Processing draws the image on an HTML canvas and saves it with canvas.toBlob. Pure helpers are in lib/tools/image.ts.
+// Browsers that cannot save a format return PNG, so the blob type is checked.
 "use client";
 
 import { useEffect, useState, type ChangeEvent } from "react";
@@ -13,8 +17,8 @@ import {
   percentSaved,
   type CropRect,
   type ImageType,
-} from "../../lib/tools/image.ts";
-import { ErrorNote, Field, inputClass, primaryButtonClass, buttonClass } from "./ui.tsx";
+} from "../../../lib/tools/image.ts";
+import { ErrorNote, Field, inputClass, primaryButtonClass, buttonClass } from "../ui.tsx";
 
 export type ImageMode = "compress" | "resize" | "convert" | "crop";
 

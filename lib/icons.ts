@@ -1,3 +1,5 @@
+// Icon, colour tile and tint for each tool, keyed by slug. Used by the homepage grid, the menus and
+// tool pages. A tool without an icon falls back to FALLBACK_ICON. Colour classes are written out in full so Tailwind keeps them.
 // Icon for each tool, keyed by slug. The homepage grid falls back to FALLBACK_ICON for any tool without one.
 import {
   AlignLeft, ArrowRightLeft, Binary, Braces, CalendarDays, Calculator, Coins, Crop, CaseSensitive,

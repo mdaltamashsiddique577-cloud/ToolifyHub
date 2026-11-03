@@ -1,29 +1,33 @@
+// Tool page (/tools/<slug>). Finds the tool in lib/registry.ts, shows its breadcrumb, icon,
+// name and summary, then renders the tool component from the COMPONENTS map.
+// To add a tool: 1) add it to lib/registry.ts with live: true, 2) add its component to COMPONENTS here,
+// 3) add an icon and colour in lib/icons.ts, 4) add it to a menu group in lib/menu.ts.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FALLBACK_ICON, ICONS, TOOL_TONE } from "../../../lib/icons.ts";
 import Link from "next/link";
 import { getTool, getCategory, liveTools } from "../../../lib/registry.ts";
-import { WordCounter } from "../../../components/tools/WordCounter.tsx";
-import { CharacterCounter } from "../../../components/tools/CharacterCounter.tsx";
-import { CaseConverter } from "../../../components/tools/CaseConverter.tsx";
-import { RemoveExtraSpaces } from "../../../components/tools/RemoveExtraSpaces.tsx";
-import { AgeCalculator } from "../../../components/tools/AgeCalculator.tsx";
-import { BmiCalculator } from "../../../components/tools/BmiCalculator.tsx";
-import { EmiCalculator } from "../../../components/tools/EmiCalculator.tsx";
-import { PercentageCalculator } from "../../../components/tools/PercentageCalculator.tsx";
-import { GstCalculator } from "../../../components/tools/GstCalculator.tsx";
-import { JsonFormatter } from "../../../components/tools/JsonFormatter.tsx";
-import { Base64Tool } from "../../../components/tools/Base64Tool.tsx";
-import { ImageTool } from "../../../components/tools/ImageTool.tsx";
-import { PdfMerge } from "../../../components/tools/PdfMerge.tsx";
-import { PdfSplit } from "../../../components/tools/PdfSplit.tsx";
-import { ImagesToPdf } from "../../../components/tools/ImagesToPdf.tsx";
-import { TextToPdf } from "../../../components/tools/TextToPdf.tsx";
-import { PdfToImage } from "../../../components/tools/PdfToImage.tsx";
-import { PdfEdit } from "../../../components/tools/PdfEdit.tsx";
-import { SignPdf } from "../../../components/tools/SignPdf.tsx";
-import { OrganizePdf } from "../../../components/tools/OrganizePdf.tsx";
-import { CompressPdf } from "../../../components/tools/CompressPdf.tsx";
+import { WordCounter } from "../../../components/tools/text/WordCounter.tsx";
+import { CharacterCounter } from "../../../components/tools/text/CharacterCounter.tsx";
+import { CaseConverter } from "../../../components/tools/text/CaseConverter.tsx";
+import { RemoveExtraSpaces } from "../../../components/tools/text/RemoveExtraSpaces.tsx";
+import { AgeCalculator } from "../../../components/tools/calculators/AgeCalculator.tsx";
+import { BmiCalculator } from "../../../components/tools/calculators/BmiCalculator.tsx";
+import { EmiCalculator } from "../../../components/tools/calculators/EmiCalculator.tsx";
+import { PercentageCalculator } from "../../../components/tools/calculators/PercentageCalculator.tsx";
+import { GstCalculator } from "../../../components/tools/calculators/GstCalculator.tsx";
+import { JsonFormatter } from "../../../components/tools/developer/JsonFormatter.tsx";
+import { Base64Tool } from "../../../components/tools/developer/Base64Tool.tsx";
+import { ImageTool } from "../../../components/tools/image/ImageTool.tsx";
+import { PdfMerge } from "../../../components/tools/pdf/PdfMerge.tsx";
+import { PdfSplit } from "../../../components/tools/pdf/PdfSplit.tsx";
+import { ImagesToPdf } from "../../../components/tools/pdf/ImagesToPdf.tsx";
+import { TextToPdf } from "../../../components/tools/pdf/TextToPdf.tsx";
+import { PdfToImage } from "../../../components/tools/pdf/PdfToImage.tsx";
+import { PdfEdit } from "../../../components/tools/pdf/PdfEdit.tsx";
+import { SignPdf } from "../../../components/tools/pdf/SignPdf.tsx";
+import { OrganizePdf } from "../../../components/tools/pdf/OrganizePdf.tsx";
+import { CompressPdf } from "../../../components/tools/pdf/CompressPdf.tsx";
 
 // Only live tools get a page. Tools not yet built return 404, never a fake page.
 const COMPONENTS: Record<string, React.ComponentType> = {

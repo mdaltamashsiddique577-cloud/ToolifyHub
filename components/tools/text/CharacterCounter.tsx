@@ -1,8 +1,9 @@
+// Character Counter UI with SMS (160) and post (280) limits. Logic in lib/tools/text.ts.
 "use client";
 
 import { useMemo, useState } from "react";
-import { countCharacters, MAX_TEXT_CHARS } from "../../lib/tools/text.ts";
-import { Field, Stat, buttonClass } from "./ui.tsx";
+import { countCharacters, MAX_TEXT_CHARS } from "../../../lib/tools/text.ts";
+import { Field, Stat, buttonClass } from "../ui.tsx";
 
 const LIMITS = [
   { label: "No limit", value: 0 },

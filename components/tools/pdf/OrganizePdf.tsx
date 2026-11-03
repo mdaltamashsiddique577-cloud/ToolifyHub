@@ -1,10 +1,12 @@
+// Organize PDF: reorder pages with up and down buttons, remove or keep pages, and save a new PDF. Uses pdf-lib.
+// Pages have no thumbnails yet.
 "use client";
 
 import { useState, type ChangeEvent } from "react";
 import { PDFDocument } from "pdf-lib";
-import { ErrorNote, Field, buttonClass, primaryButtonClass } from "./ui.tsx";
-import { MAX_PDF_BYTES, isPdfFile } from "../../lib/tools/pdf.ts";
-import { formatBytes } from "../../lib/tools/image.ts";
+import { ErrorNote, Field, buttonClass, primaryButtonClass } from "../ui.tsx";
+import { MAX_PDF_BYTES, isPdfFile } from "../../../lib/tools/pdf.ts";
+import { formatBytes } from "../../../lib/tools/image.ts";
 
 interface PageRow {
   from: number; // original page number, 1-based

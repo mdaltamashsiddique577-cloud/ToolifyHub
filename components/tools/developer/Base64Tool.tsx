@@ -1,8 +1,9 @@
+// Base64 Encoder/Decoder UI, with URL-safe option. Logic in lib/tools/dev.ts.
 "use client";
 
 import { useState } from "react";
-import { base64Encode, base64Decode, MAX_DEV_BYTES } from "../../lib/tools/dev.ts";
-import { CopyButton, ErrorNote, Field, inputClass, buttonClass } from "./ui.tsx";
+import { base64Encode, base64Decode, MAX_DEV_BYTES } from "../../../lib/tools/dev.ts";
+import { CopyButton, ErrorNote, Field, inputClass, buttonClass } from "../ui.tsx";
 
 export function Base64Tool() {
   const [mode, setMode] = useState<"encode" | "decode">("encode");

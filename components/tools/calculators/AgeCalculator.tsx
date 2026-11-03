@@ -1,8 +1,9 @@
+// Age Calculator UI: birth date and reference date (defaults to today). Maths in lib/tools/calc.ts.
 "use client";
 
 import { useEffect, useState } from "react";
-import { ageBetween } from "../../lib/tools/calc.ts";
-import { Field, Stat, ErrorNote, inputClass, todayIso, buttonClass } from "./ui.tsx";
+import { ageBetween } from "../../../lib/tools/calc.ts";
+import { Field, Stat, ErrorNote, inputClass, todayIso, buttonClass } from "../ui.tsx";
 
 export function AgeCalculator() {
   const [birth, setBirth] = useState("");

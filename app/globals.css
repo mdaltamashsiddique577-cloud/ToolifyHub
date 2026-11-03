@@ -1,3 +1,8 @@
+/*
+ * Global styles. Imports Tailwind, defines the design tokens (colours, font, radii) in @theme,
+ * styles every file input as a dashed drop box, sets the page background, the focus ring, and
+ * turns off animations for users who prefer reduced motion.
+ */
 @import "tailwindcss";
 
 /* Design tokens from the brief. Dark mode is not part of the brief, so there is one palette. */

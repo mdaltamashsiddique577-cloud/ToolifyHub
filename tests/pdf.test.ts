@@ -1,3 +1,4 @@
+// Unit tests for lib/tools/pdf.ts: page ranges, remaining pages, file checks and text wrapping.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parsePageRanges, isPdfFile } from "../lib/tools/pdf.ts";

@@ -1,3 +1,5 @@
+# CI for ToolifyHub. On every push and pull request: run tests, build, and make the static export.
+# Pushes to main also take screenshots and publish the site to the gh-pages branch (GitHub Pages).
 name: CI
 
 on:

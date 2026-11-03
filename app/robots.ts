@@ -1,3 +1,4 @@
+// robots.txt generator. Lets all crawlers in, blocks /api/, and points to the sitemap.
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";

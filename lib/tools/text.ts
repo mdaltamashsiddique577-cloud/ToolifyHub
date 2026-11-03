@@ -1,3 +1,5 @@
+// Pure text logic for the text tools: word, character, sentence and paragraph counts, reading time,
+// case conversion and space cleanup. No UI code, so the functions are unit tested in tests/tools.test.ts.
 // Text tools: pure functions, no DOM, so they can be unit tested in Node.
 
 export type CaseMode = "upper" | "lower" | "title" | "sentence" | "camel" | "snake" | "kebab";

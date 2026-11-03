@@ -1,8 +1,9 @@
+// Percentage Calculator UI with five modes (of, is what %, change, add, subtract). Maths in lib/tools/calc.ts.
 "use client";
 
 import { useState } from "react";
-import { percentage, type PercentMode } from "../../lib/tools/calc.ts";
-import { Field, Stat, ErrorNote, inputClass, buttonClass } from "./ui.tsx";
+import { percentage, type PercentMode } from "../../../lib/tools/calc.ts";
+import { Field, Stat, ErrorNote, inputClass, buttonClass } from "../ui.tsx";
 
 const MODES: { mode: PercentMode; label: string; a: string; b: string; text: (a: number, b: number) => string }[] = [
   { mode: "of", label: "X% of Y", a: "X (percent)", b: "Y", text: (a, b) => `${a}% of ${b}` },

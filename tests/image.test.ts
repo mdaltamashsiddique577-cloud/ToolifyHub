@@ -1,3 +1,4 @@
+// Unit tests for lib/tools/image.ts: size fitting, crop checks, percentages and file sizes.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {

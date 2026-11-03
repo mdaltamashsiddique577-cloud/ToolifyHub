@@ -1,3 +1,5 @@
+// Pure developer-tool logic: JSON parse and format with line and column for errors, and Base64
+// encode and decode with UTF-8 support. Input size is capped at MAX_DEV_BYTES.
 // Developer tools: JSON formatting and Base64 (UTF-8 safe). Pure functions.
 
 export const MAX_DEV_BYTES = 5 * 1024 * 1024;

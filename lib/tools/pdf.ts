@@ -1,3 +1,5 @@
+// Pure PDF helpers: file type check and size limit, page range parser ("1-3, 5"), pages left after
+// removal, and word wrapping for Text to PDF. Reading and writing PDFs stays in the components.
 // Pure helpers for the PDF tools. PDF reading and writing live in the components.
 
 export const MAX_PDF_BYTES = 50 * 1024 * 1024;

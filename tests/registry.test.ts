@@ -1,3 +1,4 @@
+// Unit tests for lib/registry.ts: unique and URL-safe slugs, known categories, and live tools.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { TOOLS, CATEGORIES, liveTools, getTool } from "../lib/registry.ts";

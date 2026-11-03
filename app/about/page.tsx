@@ -1,3 +1,4 @@
+// About page (/about). Plain text inside LegalPage. Edit the wording here.
 import type { Metadata } from "next";
 import { LegalPage } from "../../components/legal/LegalPage.tsx";
 

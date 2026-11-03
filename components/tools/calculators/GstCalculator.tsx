@@ -1,8 +1,9 @@
+// GST Calculator UI: add or remove GST, with the CGST and SGST split. Maths in lib/tools/calc.ts.
 "use client";
 
 import { useState } from "react";
-import { gst } from "../../lib/tools/calc.ts";
-import { Field, Stat, ErrorNote, inputClass, buttonClass } from "./ui.tsx";
+import { gst } from "../../../lib/tools/calc.ts";
+import { Field, Stat, ErrorNote, inputClass, buttonClass } from "../ui.tsx";
 
 const inr = (n: number) => "₹" + n.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const RATES = [0, 5, 12, 18, 28];

@@ -1,3 +1,5 @@
+// Homepage (/). Shows the hero, category links, the searchable tool grid (ToolGrid),
+// the "Why choose ToolifyHub" section, and the FAQ. The tool list comes from lib/registry.ts.
 import Link from "next/link";
 import { CATEGORIES, liveTools, getCategory } from "../lib/registry.ts";
 import { ToolGrid, type GridTool } from "../components/home/ToolGrid.tsx";

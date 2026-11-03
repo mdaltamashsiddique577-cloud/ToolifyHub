@@ -1,10 +1,11 @@
+// JPG/PNG to PDF: one image per A4 page, scaled to fit with a margin. Uses pdf-lib to embed each image.
 "use client";
 
 import { useEffect, useState, type ChangeEvent } from "react";
 import { PDFDocument, type PDFImage } from "pdf-lib";
-import { ErrorNote, primaryButtonClass } from "./ui.tsx";
-import { MAX_PDF_BYTES } from "../../lib/tools/pdf.ts";
-import { MAX_IMAGE_BYTES, formatBytes } from "../../lib/tools/image.ts";
+import { ErrorNote, primaryButtonClass } from "../ui.tsx";
+import { MAX_PDF_BYTES } from "../../../lib/tools/pdf.ts";
+import { MAX_IMAGE_BYTES, formatBytes } from "../../../lib/tools/image.ts";
 
 // A4 in points, with a margin around each picture.
 const PAGE_W = 595.28;

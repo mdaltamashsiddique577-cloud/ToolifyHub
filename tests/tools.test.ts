@@ -1,3 +1,4 @@
+// Unit tests for the text, calculator and developer logic in lib/tools.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {

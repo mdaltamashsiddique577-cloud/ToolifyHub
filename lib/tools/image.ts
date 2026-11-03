@@ -1,3 +1,5 @@
+// Pure image helpers: accepted types, output size from width and height (with or without proportions),
+// crop box checks, the crop shape helper, percentage saved and readable file sizes. Canvas work stays in the components.
 // Pure helpers for the image tools. Canvas and file handling live in the component.
 
 export const MAX_IMAGE_BYTES = 25 * 1024 * 1024;

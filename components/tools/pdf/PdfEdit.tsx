@@ -1,10 +1,13 @@
+// Five PDF edits in one component. The `mode` prop chooses the action:
+// rotate (turn all pages), page-numbers (add 'n / total' at the bottom), watermark (diagonal text),
+// remove-pages (delete chosen pages), crop (set the crop box with margins). Uses pdf-lib.
 "use client";
 
 import { useEffect, useState, type ChangeEvent } from "react";
 import { PDFDocument, StandardFonts, degrees, rgb } from "pdf-lib";
-import { ErrorNote, Field, inputClass, primaryButtonClass } from "./ui.tsx";
-import { MAX_PDF_BYTES, isPdfFile, pagesToKeep, parsePageRanges } from "../../lib/tools/pdf.ts";
-import { formatBytes } from "../../lib/tools/image.ts";
+import { ErrorNote, Field, inputClass, primaryButtonClass } from "../ui.tsx";
+import { MAX_PDF_BYTES, isPdfFile, pagesToKeep, parsePageRanges } from "../../../lib/tools/pdf.ts";
+import { formatBytes } from "../../../lib/tools/image.ts";
 
 export type PdfEditMode = "rotate" | "page-numbers" | "watermark" | "remove-pages" | "crop";
 

@@ -1,3 +1,5 @@
+// Checks that the tool page's COMPONENTS map has exactly the live tools from the registry.
+// This stops a tool from going live without its page, and a page from staying after its tool is removed.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";

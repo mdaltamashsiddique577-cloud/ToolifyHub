@@ -1,3 +1,5 @@
+// Header menus: the "All tools" mega menu and the "Convert" dropdown. Both use <details>, so they
+// open on click and work without JavaScript. Groups come from lib/menu.ts.
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { CONVERT_MENU, TOOL_MENU, type MenuGroup } from "../../lib/menu.ts";

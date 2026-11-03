@@ -1,8 +1,9 @@
+// EMI Calculator UI: loan amount, rate and tenure, with the full monthly schedule. Maths in lib/tools/calc.ts.
 "use client";
 
 import { useState } from "react";
-import { emi, emiSchedule } from "../../lib/tools/calc.ts";
-import { Field, Stat, ErrorNote, inputClass, buttonClass } from "./ui.tsx";
+import { emi, emiSchedule } from "../../../lib/tools/calc.ts";
+import { Field, Stat, ErrorNote, inputClass, buttonClass } from "../ui.tsx";
 
 const inr = (n: number) => "₹" + n.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 

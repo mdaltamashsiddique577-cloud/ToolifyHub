@@ -1,9 +1,10 @@
+// Text to PDF: wraps text to A4 pages with the standard Helvetica font. Only Latin text works, because that font has no other scripts.
 "use client";
 
 import { useEffect, useState } from "react";
 import { PDFDocument, StandardFonts } from "pdf-lib";
-import { ErrorNote, Field, primaryButtonClass } from "./ui.tsx";
-import { wrapLines } from "../../lib/tools/pdf.ts";
+import { ErrorNote, Field, primaryButtonClass } from "../ui.tsx";
+import { wrapLines } from "../../../lib/tools/pdf.ts";
 
 const PAGE_W = 595.28;
 const PAGE_H = 841.89;

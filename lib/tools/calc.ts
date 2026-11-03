@@ -1,3 +1,5 @@
+// Pure calculator logic: age between two dates, BMI and its category, EMI and schedule, percentages,
+// and GST. No UI code. Results are rounded to 2 decimals where money or units need it.
 // Calculator tools: pure functions with input checks. Money is rounded to 2 decimals.
 
 export function round2(n: number): number {

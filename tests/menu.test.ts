@@ -1,3 +1,4 @@
+// Checks lib/menu.ts: every menu entry is live, and every live tool is in the all-tools menu.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { TOOL_MENU, CONVERT_MENU } from "../lib/menu.ts";

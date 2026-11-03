@@ -1,3 +1,4 @@
+// Contact page (/contact). Plain text inside LegalPage. Fill in the contact details marked ToFill.
 import type { Metadata } from "next";
 import { LegalPage, ToFill } from "../../components/legal/LegalPage.tsx";
 

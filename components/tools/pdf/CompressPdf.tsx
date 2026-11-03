@@ -1,10 +1,12 @@
+// Compress PDF: renders each page as a JPG at a chosen quality and builds a new PDF from those images.
+// This makes large savings, but the text can no longer be selected. Uses PDF.js and pdf-lib.
 "use client";
 
 import { useEffect, useState, type ChangeEvent } from "react";
 import { PDFDocument } from "pdf-lib";
-import { ErrorNote, Field, inputClass, primaryButtonClass } from "./ui.tsx";
-import { MAX_PDF_BYTES, isPdfFile } from "../../lib/tools/pdf.ts";
-import { formatBytes, percentSaved } from "../../lib/tools/image.ts";
+import { ErrorNote, Field, inputClass, primaryButtonClass } from "../ui.tsx";
+import { MAX_PDF_BYTES, isPdfFile } from "../../../lib/tools/pdf.ts";
+import { formatBytes, percentSaved } from "../../../lib/tools/image.ts";
 import { loadPdfJs, type PdfDoc } from "./pdfjs.ts";
 
 const MAX_PAGES = 60;

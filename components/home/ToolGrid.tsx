@@ -1,3 +1,5 @@
+// Searchable grid of tool cards used on the homepage. Filters tools by name, summary,
+// category and keywords as the user types. Each card's colour comes from lib/icons.ts.
 "use client";
 
 import Link from "next/link";

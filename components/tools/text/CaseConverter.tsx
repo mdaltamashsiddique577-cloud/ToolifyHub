@@ -1,8 +1,9 @@
+// Case Converter UI: upper, lower, title, sentence, camel, snake and kebab case. Logic in lib/tools/text.ts.
 "use client";
 
 import { useState } from "react";
-import { convertCase, type CaseMode, MAX_TEXT_CHARS } from "../../lib/tools/text.ts";
-import { CopyButton, ErrorNote, buttonClass } from "./ui.tsx";
+import { convertCase, type CaseMode, MAX_TEXT_CHARS } from "../../../lib/tools/text.ts";
+import { CopyButton, ErrorNote, buttonClass } from "../ui.tsx";
 
 const MODES: { mode: CaseMode; label: string }[] = [
   { mode: "upper", label: "UPPER CASE" },

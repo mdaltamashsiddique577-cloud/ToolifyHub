@@ -1,3 +1,4 @@
+// Terms and conditions (/terms). Plain text inside LegalPage. Fill in the ToFill placeholders.
 import type { Metadata } from "next";
 import { LegalPage, ToFill } from "../../components/legal/LegalPage.tsx";
 

@@ -1,3 +1,5 @@
+// Next.js config. Two modes: a normal build with security headers, or PAGES_EXPORT=1 for the static
+// GitHub Pages export (basePath /ToolifyHub). Also sets the Node-only "canvas" module to false so pdf.js works in the browser.
 // Two modes:
 // - normal: a Next.js server build with security headers (for a Node host later)
 // - PAGES_EXPORT=1: a static site for GitHub Pages, served at /ToolifyHub

@@ -1,10 +1,11 @@
+// Split PDF: keeps only the pages or ranges typed by the user, and saves them as a new PDF.
 "use client";
 
 import { useEffect, useState, type ChangeEvent } from "react";
 import { PDFDocument } from "pdf-lib";
-import { ErrorNote, Field, inputClass, primaryButtonClass } from "./ui.tsx";
-import { MAX_PDF_BYTES, isPdfFile, parsePageRanges } from "../../lib/tools/pdf.ts";
-import { formatBytes } from "../../lib/tools/image.ts";
+import { ErrorNote, Field, inputClass, primaryButtonClass } from "../ui.tsx";
+import { MAX_PDF_BYTES, isPdfFile, parsePageRanges } from "../../../lib/tools/pdf.ts";
+import { formatBytes } from "../../../lib/tools/image.ts";
 
 interface Result {
   url: string;

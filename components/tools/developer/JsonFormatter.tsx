@@ -1,8 +1,9 @@
+// JSON Formatter UI: format, minify and validate, with error line and column. Logic in lib/tools/dev.ts.
 "use client";
 
 import { useState } from "react";
-import { formatJson, type JsonIndent, MAX_DEV_BYTES } from "../../lib/tools/dev.ts";
-import { CopyButton, ErrorNote, Field, inputClass, primaryButtonClass, buttonClass } from "./ui.tsx";
+import { formatJson, type JsonIndent, MAX_DEV_BYTES } from "../../../lib/tools/dev.ts";
+import { CopyButton, ErrorNote, Field, inputClass, primaryButtonClass, buttonClass } from "../ui.tsx";
 
 function parseIndent(value: string): JsonIndent {
   if (value === "tab" || value === "minify") return value;

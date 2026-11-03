@@ -1,3 +1,4 @@
+// All tools page (/tools). Lists every live tool, grouped by category, from lib/registry.ts.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CATEGORIES, liveTools, getCategory } from "../../lib/registry.ts";

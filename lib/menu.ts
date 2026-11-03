@@ -1,3 +1,5 @@
+// Header menu groups. Each group has a heading and a list of tool slugs. The tests check that
+// every slug is live and that every live tool appears in the all-tools menu.
 // Menu groups for the header. Each entry is a tool slug. Tests check that every slug is live.
 
 export interface MenuGroup {

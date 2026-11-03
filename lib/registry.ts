@@ -1,3 +1,6 @@
+// Single source of truth for categories and tools. Each tool has a slug, name, category, summary,
+// keywords and a live flag. Only live tools get a page, appear in the sitemap and the homepage, and get a menu link.
+// Keep tools in the order they should appear on the homepage.
 // Single source of truth for every tool and category.
 // Routes, search, sitemap and the homepage are all built from this list.
 // A tool is marked live only when its page and logic are finished and tested.

@@ -1,3 +1,5 @@
+// Privacy policy (/privacy-policy). Plain text inside LegalPage. Fill in the ToFill placeholders
+// (owner, contact, AI provider, log retention, jurisdiction, launch date) before going live.
 import type { Metadata } from "next";
 import { LegalPage, ToFill } from "../../components/legal/LegalPage.tsx";
 

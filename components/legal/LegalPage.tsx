@@ -1,3 +1,5 @@
+// Shared layout for the legal and information pages (about, contact, privacy, terms, disclaimer).
+// ToFill marks a placeholder the site owner must replace.
 import type { ReactNode } from "react";
 import Link from "next/link";
 

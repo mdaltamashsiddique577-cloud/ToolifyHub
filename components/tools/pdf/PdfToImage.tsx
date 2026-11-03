@@ -1,9 +1,11 @@
+// PDF to JPG/PNG: renders each chosen page with PDF.js onto a canvas and saves it as an image.
+// Limited to 30 pages per run to keep memory low.
 "use client";
 
 import { useEffect, useState, type ChangeEvent } from "react";
-import { ErrorNote, Field, inputClass, primaryButtonClass } from "./ui.tsx";
-import { MAX_PDF_BYTES, isPdfFile, parsePageRanges } from "../../lib/tools/pdf.ts";
-import { formatBytes } from "../../lib/tools/image.ts";
+import { ErrorNote, Field, inputClass, primaryButtonClass } from "../ui.tsx";
+import { MAX_PDF_BYTES, isPdfFile, parsePageRanges } from "../../../lib/tools/pdf.ts";
+import { formatBytes } from "../../../lib/tools/image.ts";
 
 // The slice of the PDF.js API this tool uses.
 interface PdfPage {

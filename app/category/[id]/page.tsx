@@ -1,3 +1,5 @@
+// Category page (/category/<id>). Lists the live tools in one category.
+// A page is generated for every category in lib/registry.ts at build time.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";

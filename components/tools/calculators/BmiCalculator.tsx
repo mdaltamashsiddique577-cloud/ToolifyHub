@@ -1,8 +1,9 @@
+// BMI Calculator UI with weight and height inputs and the category result. Maths in lib/tools/calc.ts.
 "use client";
 
 import { useState } from "react";
-import { bmi } from "../../lib/tools/calc.ts";
-import { Field, Stat, ErrorNote, inputClass, buttonClass } from "./ui.tsx";
+import { bmi } from "../../../lib/tools/calc.ts";
+import { Field, Stat, ErrorNote, inputClass, buttonClass } from "../ui.tsx";
 
 export function BmiCalculator() {
   const [height, setHeight] = useState("");

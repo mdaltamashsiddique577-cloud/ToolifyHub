@@ -1,3 +1,5 @@
+// PDF.js loader shared by the PDF tools that draw pages. The library is bundled by npm. The worker is
+// loaded from cdnjs at the same pinned version, which keeps the main bundle small. Change the version in both places together.
 // Shared PDF.js loader for the tools that draw PDF pages. The worker is pinned on cdnjs.
 export interface PdfPage {
   getViewport(o: { scale: number }): { width: number; height: number };
