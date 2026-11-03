@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://mdaltamashsiddique577-cloud.github.io/ToolifyHub/sitemap.xml
