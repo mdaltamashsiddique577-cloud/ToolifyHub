@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CATEGORIES, liveTools, getCategory } from "../lib/registry.ts";
+import { ToolGrid, type GridTool } from "../components/home/ToolGrid.tsx";
 
 const FAQ = [
   {
@@ -8,7 +9,7 @@ const FAQ = [
   },
   {
     q: "Are my files uploaded to your servers?",
-    a: "Tools that work with files, such as images and PDFs, process them in your browser. The files are not sent to us. The AI summarizer is the only tool that sends text to a server.",
+    a: "No. PDF and image tools process your files in your browser, and the files are not sent to us. The AI summarizer is the only tool that sends text to a server.",
   },
   {
     q: "Is ToolifyHub free?",
@@ -29,58 +30,40 @@ const FAQ = [
 ];
 
 export default function HomePage() {
-  const live = liveTools();
+  const tools: GridTool[] = liveTools().map((t) => ({
+    slug: t.slug,
+    name: t.name,
+    summary: t.summary,
+    keywords: t.keywords,
+    category: t.category,
+    categoryName: getCategory(t.category)?.name ?? "",
+  }));
 
   return (
     <div>
-      <section className="mx-auto max-w-3xl px-4 pb-10 pt-14 text-center sm:px-6">
-        <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-          All Your Tools. One Simple Place.
+      <section className="mx-auto max-w-4xl px-4 pb-8 pt-12 text-center sm:px-6 sm:pt-16">
+        <h1 className="text-balance text-3xl font-bold tracking-tight sm:text-5xl">
+          Every PDF and image tool, free in your browser
         </h1>
-        <p className="mx-auto mt-4 max-w-xl text-pretty text-lg text-muted">
-          Free tools that work in your browser. No login, no signup, and your files stay on your device.
+        <p className="mx-auto mt-4 max-w-2xl text-pretty text-base text-muted sm:text-lg">
+          Merge, split, compress, convert and edit. No login, and your files never leave your device.
         </p>
+        <nav aria-label="Tool categories" className="mt-6 flex flex-wrap justify-center gap-2">
+          {CATEGORIES.map((c) => (
+            <Link
+              key={c.id}
+              href={`/category/${c.id}`}
+              className="rounded-full bg-secondary px-4 py-1.5 text-sm font-medium text-ink hover:bg-[#e9e4ff]"
+            >
+              {c.name}
+            </Link>
+          ))}
+        </nav>
       </section>
 
       <section aria-labelledby="all-tools" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <h2 id="all-tools" className="text-2xl font-semibold tracking-tight">
-            Tools
-          </h2>
-          <p className="text-sm text-muted">{live.length} tools available now</p>
-        </div>
-
-        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {live.map((tool) => (
-            <li key={tool.slug}>
-              <Link
-                href={`/tools/${tool.slug}`}
-                className="block h-full rounded-[var(--radius-card)] border border-line bg-white p-5 shadow-sm transition hover:border-primary"
-              >
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary-text">
-                  {getCategory(tool.category)?.name}
-                </p>
-                <h3 className="mt-2 text-lg font-semibold">{tool.name}</h3>
-                <p className="mt-1 text-sm text-muted">{tool.summary}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <h2 className="mt-14 text-2xl font-semibold tracking-tight">Categories</h2>
-        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {CATEGORIES.map((c) => (
-            <li key={c.id}>
-              <Link
-                href={`/category/${c.id}`}
-                className="block h-full rounded-[var(--radius-card)] bg-secondary p-5 transition hover:bg-[#e9e4ff]"
-              >
-                <h3 className="font-semibold text-ink">{c.name}</h3>
-                <p className="mt-1 text-sm text-muted">{c.description}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <h2 id="all-tools" className="sr-only">All tools</h2>
+        <ToolGrid tools={tools} />
       </section>
 
       <section aria-labelledby="why" className="border-t border-line bg-secondary">
@@ -93,7 +76,7 @@ export default function HomePage() {
             </li>
             <li className="rounded-[var(--radius-card)] bg-white p-5">
               <h3 className="font-semibold">Files stay on your device</h3>
-              <p className="mt-1 text-sm text-muted">Tools that work with files run in your browser. Nothing is uploaded to us.</p>
+              <p className="mt-1 text-sm text-muted">PDF and image tools run in your browser. Nothing is uploaded to us.</p>
             </li>
             <li className="rounded-[var(--radius-card)] bg-white p-5">
               <h3 className="font-semibold">Fast and light</h3>
