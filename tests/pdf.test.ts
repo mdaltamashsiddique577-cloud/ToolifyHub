@@ -49,3 +49,11 @@ test("existing line breaks and blank lines are kept", () => {
 test("a word longer than the line is split", () => {
   assert.deepEqual(wrapLines("abcdefgh", 24, six), ["abcd", "efgh"]);
 });
+
+import { pagesToKeep } from "../lib/tools/pdf.ts";
+
+test("pagesToKeep returns the pages that are not removed", () => {
+  assert.deepEqual(pagesToKeep(5, [2, 4]), [1, 3, 5]);
+  assert.deepEqual(pagesToKeep(3, []), [1, 2, 3]);
+  assert.deepEqual(pagesToKeep(2, [1, 2]), []);
+});

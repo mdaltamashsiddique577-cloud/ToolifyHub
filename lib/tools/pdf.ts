@@ -60,3 +60,11 @@ export function wrapLines(text: string, maxWidth: number, measure: (s: string) =
   }
   return out;
 }
+
+// Pages left after removing some. Pages are 1-based and returned in order.
+export function pagesToKeep(pageCount: number, remove: number[]): number[] {
+  const drop = new Set(remove);
+  const keep: number[] = [];
+  for (let p = 1; p <= pageCount; p++) if (!drop.has(p)) keep.push(p);
+  return keep;
+}

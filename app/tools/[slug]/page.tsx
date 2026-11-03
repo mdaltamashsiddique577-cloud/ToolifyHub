@@ -19,6 +19,7 @@ import { PdfSplit } from "../../../components/tools/PdfSplit.tsx";
 import { ImagesToPdf } from "../../../components/tools/ImagesToPdf.tsx";
 import { TextToPdf } from "../../../components/tools/TextToPdf.tsx";
 import { PdfToImage } from "../../../components/tools/PdfToImage.tsx";
+import { PdfEdit } from "../../../components/tools/PdfEdit.tsx";
 
 // Only live tools get a page. Tools not yet built return 404, never a fake page.
 const COMPONENTS: Record<string, React.ComponentType> = {
@@ -44,6 +45,10 @@ const COMPONENTS: Record<string, React.ComponentType> = {
   "jpg-to-pdf": ImagesToPdf,
   "text-to-pdf": TextToPdf,
   "pdf-to-jpg": PdfToImage,
+  "rotate-pdf": () => <PdfEdit mode="rotate" />,
+  "add-page-numbers": () => <PdfEdit mode="page-numbers" />,
+  "add-watermark": () => <PdfEdit mode="watermark" />,
+  "remove-pages": () => <PdfEdit mode="remove-pages" />,
 };
 
 export function generateStaticParams() {
