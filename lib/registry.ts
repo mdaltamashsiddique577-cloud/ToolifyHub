@@ -142,6 +142,14 @@ export const TOOLS: ToolMeta[] = [
     live: true,
   },
   {
+    slug: "pdf-to-jpg",
+    name: "PDF to JPG",
+    category: "pdf",
+    summary: "Save PDF pages as JPG or PNG images, right in your browser.",
+    keywords: ["pdf to jpg", "pdf to png", "pdf to image"],
+    live: true,
+  },
+  {
     slug: "merge-pdf",
     name: "Merge PDF",
     category: "pdf",
