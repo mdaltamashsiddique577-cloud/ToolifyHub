@@ -103,6 +103,14 @@ export const TOOLS: ToolMeta[] = [
     live: true,
   },
   {
+    slug: "sign-pdf",
+    name: "Sign PDF",
+    category: "pdf",
+    summary: "Draw your signature and place it on a page of a PDF.",
+    keywords: ["sign pdf", "e-sign", "signature pdf"],
+    live: true,
+  },
+  {
     slug: "merge-pdf",
     name: "Merge PDF",
     category: "pdf",

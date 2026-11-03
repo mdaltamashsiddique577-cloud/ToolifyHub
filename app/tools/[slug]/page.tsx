@@ -21,6 +21,7 @@ import { ImagesToPdf } from "../../../components/tools/ImagesToPdf.tsx";
 import { TextToPdf } from "../../../components/tools/TextToPdf.tsx";
 import { PdfToImage } from "../../../components/tools/PdfToImage.tsx";
 import { PdfEdit } from "../../../components/tools/PdfEdit.tsx";
+import { SignPdf } from "../../../components/tools/SignPdf.tsx";
 
 // Only live tools get a page. Tools not yet built return 404, never a fake page.
 const COMPONENTS: Record<string, React.ComponentType> = {
@@ -51,6 +52,7 @@ const COMPONENTS: Record<string, React.ComponentType> = {
   "add-watermark": () => <PdfEdit mode="watermark" />,
   "remove-pages": () => <PdfEdit mode="remove-pages" />,
   "crop-pdf": () => <PdfEdit mode="crop" />,
+  "sign-pdf": SignPdf,
 };
 
 export function generateStaticParams() {
@@ -80,7 +82,8 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   return (
     <>
-      <section className="bg-secondary">
+      <section className="relative isolate overflow-hidden bg-gradient-to-b from-secondary to-white">
+        <div aria-hidden="true" className="pointer-events-none absolute -top-24 left-1/2 -z-10 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
         <div className="mx-auto max-w-3xl px-4 py-10 text-center sm:px-6">
           <nav aria-label="Breadcrumb" className="text-sm text-muted">
             <ol className="flex flex-wrap items-center justify-center gap-2">

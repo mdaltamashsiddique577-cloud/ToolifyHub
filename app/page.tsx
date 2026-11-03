@@ -41,7 +41,10 @@ export default function HomePage() {
 
   return (
     <div>
-      <section className="mx-auto max-w-4xl px-4 pb-8 pt-12 text-center sm:px-6 sm:pt-16">
+      <section className="relative isolate overflow-hidden bg-gradient-to-b from-secondary to-white">
+        <div aria-hidden="true" className="pointer-events-none absolute -top-24 left-1/2 -z-10 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
+        <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-40 -z-10 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl" />
+        <div className="mx-auto max-w-4xl px-4 pb-10 pt-12 text-center sm:px-6 sm:pt-16">
         <h1 className="text-balance text-3xl font-bold tracking-tight sm:text-5xl">
           Every PDF and image tool, free in your browser
         </h1>
@@ -59,6 +62,7 @@ export default function HomePage() {
             </Link>
           ))}
         </nav>
+        </div>
       </section>
 
       <section aria-labelledby="all-tools" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">

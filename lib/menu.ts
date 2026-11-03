@@ -7,7 +7,7 @@ export interface MenuGroup {
 
 export const TOOL_MENU: MenuGroup[] = [
   { title: "Organize PDF", slugs: ["merge-pdf", "split-pdf", "remove-pages"] },
-  { title: "Edit PDF", slugs: ["rotate-pdf", "add-page-numbers", "add-watermark", "crop-pdf"] },
+  { title: "Edit PDF", slugs: ["rotate-pdf", "add-page-numbers", "add-watermark", "crop-pdf", "sign-pdf"] },
   { title: "Convert to PDF", slugs: ["jpg-to-pdf", "text-to-pdf"] },
   { title: "Convert from PDF", slugs: ["pdf-to-jpg"] },
   { title: "Image tools", slugs: ["image-compressor", "image-resizer", "image-cropper", "png-to-jpg", "jpg-to-png", "webp-converter"] },
