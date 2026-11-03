@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CATEGORY_TONE, FALLBACK_ICON, ICONS } from "../../../lib/icons.ts";
 import Link from "next/link";
 import { getTool, getCategory, liveTools } from "../../../lib/registry.ts";
 import { WordCounter } from "../../../components/tools/WordCounter.tsx";
@@ -75,24 +76,34 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   const category = getCategory(tool.category);
 
+  const Icon = ICONS[slug] ?? FALLBACK_ICON;
+
   return (
-    <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-      <nav aria-label="Breadcrumb" className="text-sm text-muted">
-        <ol className="flex flex-wrap items-center gap-2">
-          <li><Link href="/" className="hover:text-ink">Home</Link></li>
-          <li aria-hidden="true">/</li>
-          <li><Link href={`/category/${tool.category}`} className="hover:text-ink">{category?.name}</Link></li>
-          <li aria-hidden="true">/</li>
-          <li aria-current="page" className="text-ink">{tool.name}</li>
-        </ol>
-      </nav>
+    <>
+      <section className="bg-secondary">
+        <div className="mx-auto max-w-3xl px-4 py-10 text-center sm:px-6">
+          <nav aria-label="Breadcrumb" className="text-sm text-muted">
+            <ol className="flex flex-wrap items-center justify-center gap-2">
+              <li><Link href="/" className="hover:text-ink">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href={`/category/${tool.category}`} className="hover:text-ink">{category?.name}</Link></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="text-ink">{tool.name}</li>
+            </ol>
+          </nav>
+          <span className={`mx-auto mt-5 flex h-16 w-16 items-center justify-center rounded-2xl ${CATEGORY_TONE[tool.category] ?? "bg-white text-primary-text"}`}>
+            <Icon aria-hidden="true" className="h-8 w-8" />
+          </span>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight">{tool.name}</h1>
+          <p className="mx-auto mt-2 max-w-xl text-pretty text-muted">{tool.summary}</p>
+        </div>
+      </section>
 
-      <h1 className="mt-4 text-3xl font-bold tracking-tight">{tool.name}</h1>
-      <p className="mt-2 text-muted">{tool.summary}</p>
-
-      <div className="mt-8">
-        <Component />
+      <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+        <div className="rounded-3xl border border-line bg-white p-5 shadow-sm sm:p-8">
+          <Component />
+        </div>
       </div>
-    </article>
+    </>
   );
 }

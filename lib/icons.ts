@@ -36,3 +36,12 @@ export const ICONS: Record<string, LucideIcon> = {
   "json-formatter": Braces,
   "base64-encoder": Binary,
 };
+
+// Tint for each category's icon tile. Full class names so the build keeps them.
+export const CATEGORY_TONE: Record<string, string> = {
+  image: "bg-sky-50 text-sky-700",
+  pdf: "bg-rose-50 text-rose-700",
+  text: "bg-violet-50 text-violet-700",
+  calculators: "bg-emerald-50 text-emerald-700",
+  developer: "bg-amber-50 text-amber-800",
+};

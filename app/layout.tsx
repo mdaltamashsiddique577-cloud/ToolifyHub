@@ -40,24 +40,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
-        <header className="border-b border-line bg-white">
+        <header className="sticky top-0 z-20 border-b border-line bg-white/95 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-            <Link href="/" className="text-lg font-bold tracking-tight text-ink">
-              ToolifyHub
+            <Link href="/" className="flex items-center gap-2" aria-label="ToolifyHub home">
+              <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-base font-bold text-primary-fg">T</span>
+              <span className="text-lg font-bold tracking-tight text-ink">ToolifyHub</span>
             </Link>
             <nav aria-label="Main" className="flex items-center gap-1 text-sm">
-              <Link href="/tools" className="rounded-full px-3 py-1.5 text-muted hover:text-ink">
-                All tools
-              </Link>
               {CATEGORIES.slice(0, 3).map((c) => (
                 <Link
                   key={c.id}
                   href={`/category/${c.id}`}
-                  className="hidden rounded-full px-3 py-1.5 text-muted hover:text-ink md:inline-block"
+                  className="hidden rounded-full px-3 py-1.5 font-medium text-muted hover:bg-secondary hover:text-ink md:inline-block"
                 >
                   {c.name}
                 </Link>
               ))}
+              <Link href="/tools" className="ml-1 rounded-full bg-primary px-4 py-2 font-semibold text-primary-fg hover:brightness-110">
+                All tools
+              </Link>
             </nav>
           </div>
         </header>

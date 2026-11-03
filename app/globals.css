@@ -23,6 +23,30 @@ body {
   color: var(--color-ink);
 }
 
+/* File inputs look like drop boxes. The native button is restyled to match. */
+input[type="file"] {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 2px dashed var(--color-primary);
+  border-radius: var(--radius-card);
+  background: var(--color-secondary);
+  padding: 28px 16px;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+input[type="file"]::file-selector-button {
+  margin-right: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-primary-fg);
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* Visible focus ring on every control. */
 :focus-visible {
   outline: 2px solid var(--color-primary);
