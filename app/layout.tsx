@@ -70,7 +70,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p className="font-semibold">ToolifyHub</p>
               <p className="mt-2 text-muted">All your tools. One simple place.</p>
             </div>
-            <p className="text-muted">Legal pages are coming before launch.</p>
+            <nav aria-label="Footer" className="flex flex-col gap-2">
+              <Link href="/about" className="text-muted hover:text-ink">About us</Link>
+              <Link href="/contact" className="text-muted hover:text-ink">Contact us</Link>
+              <Link href="/privacy-policy" className="text-muted hover:text-ink">Privacy policy</Link>
+              <Link href="/terms" className="text-muted hover:text-ink">Terms and conditions</Link>
+              <Link href="/disclaimer" className="text-muted hover:text-ink">Disclaimer</Link>
+            </nav>
             <p className="text-muted">© {new Date().getFullYear()} ToolifyHub. Tools run in your browser where possible.</p>
           </div>
         </footer>
